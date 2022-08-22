@@ -1,0 +1,65 @@
+Future<void> main() async {
+  var dicts = {
+    'tag': ['saturn'],
+    'url': 'Text string',
+  };
+
+  var fullname = 'John Doe';
+  var users = ['Mary', 'Bob'];
+  int a = 10;
+  List<int> b = [30, 40, 50, 60, 70];
+  String name = "Kong";
+  Map<String, dynamic> mapVal = {
+    'tag': ['saturn'],
+    'url': 'Text string',
+  };
+
+  String? name2;
+
+  Map<String, dynamic> products = {
+    'id': 100,
+    'name': 'Coke',
+  };
+
+  print('fullname = $fullname');
+  print('users.length $users.length');
+  print('int a = $a');
+  print(b[0]);
+  print("String = $name");
+
+  print('dicts = $dicts.tag');
+
+  print('map $mapVal');
+
+  name2 = "Amornpan";
+  //warning line 36 • The '!' will have no effect because the receiver can't be null. (view docs) Try removing the '!' operator.
+  //print(name2!.length);
+
+  //List
+  print('Hello $fullname Salary: $a');
+  print('Lenght: ${name.length}');
+  print('User: ${users[1]}');
+
+  for (var item in b) {
+    print('item in list b = $item');
+  }
+
+//    users.forEach((items){
+//     print('item in users list: $items');
+//   };
+
+  //Map
+  print('Product: ${products['name']}');
+
+  int sum(int a, int b) {
+    return a + b;
+  }
+
+  print(sum(10, 20));
+
+  int sum2({int? a = 0, required int b, int? c}) {
+    return a! + b + c!;
+  }
+
+  print(sum2(a: 20, b: 50, c: 2));
+}
