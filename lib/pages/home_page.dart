@@ -34,12 +34,19 @@ class _HomePageState extends State<HomePage> {
             );
           },
         ),
-        actions: <Widget>[
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.search),
+            tooltip: 'Search',
+            onPressed: () {
+              debugPrint('you click search icon button');
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.more_vert_outlined),
             tooltip: 'More',
             onPressed: () {
-              // handle the press
+              debugPrint('you click Moure icon button');
             },
           ),
         ],
