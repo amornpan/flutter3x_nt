@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'pages/home_page.dart';
+import 'package:flutter3x_nt/pages/about_page.dart';
+import 'package:flutter3x_nt/pages/home_page.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +13,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'NT R&D',
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
@@ -27,7 +29,19 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const HomePage(),
+      // home: const HomePage(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(
+          name: '/',
+          page: () => const HomePage(),
+        ),
+        GetPage(
+          name: '/about',
+          page: () => const AboutPage(),
+          //transition: 
+        ),
+      ],
     );
   }
 }

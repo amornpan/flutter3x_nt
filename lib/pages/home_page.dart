@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter3x_nt/widgets/my_header.dart';
+import 'package:get/get.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -35,8 +36,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.shopping_cart),
-            tooltip: 'Open shopping cart',
+            icon: const Icon(Icons.more_vert_outlined),
+            tooltip: 'More',
             onPressed: () {
               // handle the press
             },
@@ -51,10 +52,14 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            MyHeader(title: 'Kong1'),
-            MyHeader(title: 'Kong2'),
-            MyHeader(title: 'Kong3'),
+          children: <Widget>[
+            const MyHeader(title: 'Kong1'),
+            const SizedBox(height: 10),
+            OutlinedButton(
+                onPressed: () {
+                  Get.toNamed('/about');
+                },
+                child: const Text('About')),
           ],
         ),
       ),
