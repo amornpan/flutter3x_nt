@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/menu_drawer.dart';
+
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
 
@@ -12,6 +14,7 @@ class _AboutPageState extends State<AboutPage> {
   Widget build(BuildContext context) {
     var or = MediaQuery.of(context).orientation;
     return Scaffold(
+      drawer: const MenuDrawer(),
       appBar: AppBar(
         centerTitle: true,
         title: const Text('รู้จักเราให้มากขึ้น'),

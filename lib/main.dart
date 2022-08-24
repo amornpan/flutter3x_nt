@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter3x_nt/pages/about_page.dart';
+import 'package:flutter3x_nt/pages/details_page.dart';
 import 'package:flutter3x_nt/pages/home_page.dart';
 import 'package:flutter3x_nt/pages/layout_design.dart';
+import 'package:flutter3x_nt/pages/product_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -36,16 +38,27 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/',
           page: () => const HomePage(),
+          transition: Transition.noTransition
         ),
         GetPage(
           name: '/about',
           page: () => const AboutPage(),
-          //transition:
+          transition: Transition.zoom
         ),
         GetPage(
           name: '/layout',
           page: () => const LayoutDesign(),
-          //transition:
+          transition: Transition.circularReveal
+        ),
+        GetPage(
+          name: '/product',
+          page: () => const ProductPage(),
+          transition: Transition.fadeIn
+        ),
+        GetPage(
+          name: '/details',
+          page: () => const DetailsPage(),
+          transition: Transition.downToUp
         ),
       ],
     );

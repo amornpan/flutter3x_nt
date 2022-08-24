@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter3x_nt/widgets/menu_drawer.dart';
 import 'package:flutter3x_nt/widgets/my_header.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MenuDrawer(),
       appBar: AppBar(
         toolbarHeight: 60.0,
         leading: Builder(

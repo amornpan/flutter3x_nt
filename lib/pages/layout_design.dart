@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../widgets/menu_drawer.dart';
+
 class LayoutDesign extends StatefulWidget {
   const LayoutDesign({super.key});
 
@@ -12,6 +14,7 @@ class _LayoutDesignState extends State<LayoutDesign> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        drawer: const MenuDrawer(),
         appBar: AppBar(
           centerTitle: true,
           title: const Text('ออกแบบ Layout'),

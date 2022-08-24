@@ -1,5 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.aurainnovation.flutter3x_nt">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+
    <application
         android:label="flutter3x_nt"
         android:name="${applicationName}"
