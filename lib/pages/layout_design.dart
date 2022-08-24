@@ -21,13 +21,13 @@ class _LayoutDesignState extends State<LayoutDesign> {
             children: <Widget>[
               Image.asset('assets/images/building-2.png'),
               Padding(
-                padding:  EdgeInsets.all(15),
+                padding: EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     const Text(
                       'R&D National Telecom',
-                      style:  TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 30,
                       ),
@@ -47,8 +47,9 @@ class _LayoutDesignState extends State<LayoutDesign> {
                         ),
                         Expanded(
                             flex: 6,
-                            child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                              children: const[
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: const [
                                 Text(
                                   'admin@nt.ntplc.co.th',
                                   style: TextStyle(
@@ -64,6 +65,50 @@ class _LayoutDesignState extends State<LayoutDesign> {
                         //Expanded(child: child),
                       ],
                     ),
+                    const Divider(),
+                    Wrap(
+                      alignment: WrapAlignment.center,
+                      spacing: 4,
+                      children: List.generate(
+                        5,
+                        (index) => Chip(
+                          label: Text(
+                            '${index + 1}',
+                          ),
+                          avatar: const Icon(Icons.verified),
+                          backgroundColor: Colors.green[200],
+                        ),
+                      ),
+                    ),
+                    const Divider(),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/me.jpg'),
+                          radius: 40,
+                        ),
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/me.jpg'),
+                          radius: 40,
+                        ),
+                        const CircleAvatar(
+                          backgroundImage: AssetImage('assets/images/me.jpg'),
+                          radius: 40,
+                        ),
+                        SizedBox(
+                          width: 100,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: const [
+                              Icon(Icons.home),
+                              Icon(Icons.face),
+                              Icon(Icons.nature),
+                            ],
+                          ),
+                        )
+                      ],
+                    )
                   ],
                 ),
               ),
