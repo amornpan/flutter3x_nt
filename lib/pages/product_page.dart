@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -62,6 +63,12 @@ class _ProductPageState extends State<ProductPage> {
                     // return Text(
                     //     '${snapshot.data!['data'][index]['title']}');
                     return ListTile(
+                      onTap: () {
+                        Get.toNamed('/details', arguments: {
+                          'id': snapshot.data!['data'][index]['id'],
+                          'title': snapshot.data!['data'][index]['title'],
+                        });
+                      },
                       leading: ConstrainedBox(
                         constraints: const BoxConstraints(
                           maxWidth: 80,
@@ -74,8 +81,7 @@ class _ProductPageState extends State<ProductPage> {
                       ),
                       // leading:
                       //     Text('${snapshot.data!['data'][index]['id']}'),
-                      title:
-                          Text('${snapshot.data!['data'][index]['title']}'),
+                      title: Text('${snapshot.data!['data'][index]['title']}'),
                       subtitle:
                           Text('${snapshot.data!['data'][index]['detail']}'),
                       trailing:
