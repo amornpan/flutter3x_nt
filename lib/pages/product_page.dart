@@ -44,35 +44,56 @@ class _ProductPageState extends State<ProductPage> {
         centerTitle: true,
         title: const Text('Product Page API'),
       ),
-      body: SingleChildScrollView(
-        child: SafeArea(
-          child: Column(
-            children: [
-              FutureBuilder<Map<String, dynamic>>(
-                future: dataProductFromFuture,
-                builder: ((context, snapshot) {
-                  if (snapshot.hasData) {
-                    return Center(
-                      child: Text(
-                          'All courses are ${snapshot.data!['data'].length}'),
-                    );
-                    // return Center(
-                    //   child: Text(
-                    //       'First course is ${snapshot.data!['data'][0]['title']}'),
-                    // );
-                  } else if (snapshot.hasError) {
-                    return Center(
-                      child: Text(
-                        'Has error ${snapshot.error}',
-                        style: const TextStyle(color: Colors.red),
+      body: SafeArea(
+        child: FutureBuilder<Map<String, dynamic>>(
+          future: dataProductFromFuture,
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              // return Center(
+              //   child: Text(
+              //       'All courses are ${snapshot.data!['data'].length}'),
+              // );
+              // return Center(
+              //   child: Text(
+              //       'First course is ${snapshot.data!['data'][0]['title']}'),
+              // );
+              return ListView.separated(
+                  itemBuilder: (context, index) {
+                    // return Text(
+                    //     '${snapshot.data!['data'][index]['title']}');
+                    return ListTile(
+                      leading: ConstrainedBox(
+                        constraints: const BoxConstraints(
+                          maxWidth: 80,
+                          maxHeight: 80,
+                          minWidth: 80,
+                          minHeight: 80,
+                        ),
+                        child: Image.network(
+                            '${snapshot.data!['data'][index]['picture']}'),
                       ),
+                      // leading:
+                      //     Text('${snapshot.data!['data'][index]['id']}'),
+                      title:
+                          Text('${snapshot.data!['data'][index]['title']}'),
+                      subtitle:
+                          Text('${snapshot.data!['data'][index]['detail']}'),
+                      trailing:
+                          Text('${snapshot.data!['data'][index]['view']}'),
                     );
-                  }
-                  return const Center(child: CircularProgressIndicator());
-                }),
-              ),
-            ],
-          ),
+                  },
+                  separatorBuilder: (context, index) => const Divider(),
+                  itemCount: snapshot.data!['data'].length);
+            } else if (snapshot.hasError) {
+              return Center(
+                child: Text(
+                  'Has error ${snapshot.error}',
+                  style: const TextStyle(color: Colors.red),
+                ),
+              );
+            }
+            return const Center(child: CircularProgressIndicator());
+          }),
         ),
       ),
     );
