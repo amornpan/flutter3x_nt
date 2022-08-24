@@ -3,7 +3,10 @@ import 'package:flutter3x_nt/pages/about_page.dart';
 import 'package:flutter3x_nt/pages/details_page.dart';
 import 'package:flutter3x_nt/pages/home_page.dart';
 import 'package:flutter3x_nt/pages/layout_design.dart';
+import 'package:flutter3x_nt/pages/login_page.dart';
+import 'package:flutter3x_nt/pages/news_page.dart';
 import 'package:flutter3x_nt/pages/product_page.dart';
+import 'package:flutter3x_nt/pages/website_page.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -36,30 +39,37 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(
-          name: '/',
-          page: () => const HomePage(),
-          transition: Transition.noTransition
-        ),
+            name: '/',
+            page: () => const HomePage(),
+            transition: Transition.noTransition),
         GetPage(
-          name: '/about',
-          page: () => const AboutPage(),
-          transition: Transition.zoom
-        ),
+            name: '/about',
+            page: () => const AboutPage(),
+            transition: Transition.zoom),
         GetPage(
-          name: '/layout',
-          page: () => const LayoutDesign(),
-          transition: Transition.circularReveal
-        ),
+            name: '/layout',
+            page: () => const LayoutDesign(),
+            transition: Transition.circularReveal),
         GetPage(
-          name: '/product',
-          page: () => const ProductPage(),
-          transition: Transition.fadeIn
-        ),
+            name: '/product',
+            page: () => const ProductPage(),
+            transition: Transition.fadeIn),
         GetPage(
-          name: '/details',
-          page: () => const DetailsPage(),
-          transition: Transition.downToUp
-        ),
+            name: '/details',
+            page: () => const DetailsPage(),
+            transition: Transition.downToUp),
+        GetPage(
+            name: '/news',
+            page: () => const NewsPage(),
+            transition: Transition.cupertino),
+        GetPage(
+            name: '/website',
+            page: () => const WebsitePage(),
+            transition: Transition.rightToLeftWithFade),
+        GetPage(
+            name: '/login',
+            page: () => const LoginPage(),
+            transition: Transition.cupertinoDialog),
       ],
     );
   }

@@ -44,31 +44,29 @@ class _DetailsPageState extends State<DetailsPage> {
         centerTitle: true,
         title: Text('${product['title']}'),
       ),
-      body:  SafeArea(
+      body: SafeArea(
         child: FutureBuilder<Map<String, dynamic>>(
           future: getDataFuture,
           builder: ((context, snapshot) {
             if (snapshot.hasData) {
               return ListView.separated(
                   itemBuilder: (context, index) {
-                    // return Text(
-                    //     '${snapshot.data!['data'][index]['title']}');
                     return ListTile(
-                      onTap: () {
-                        Get.toNamed('/details', arguments: {
-                          'id': snapshot.data!['data'][index]['id'],
-                          'title': snapshot.data!['data'][index]['title'],
-                        });
-                      },
-                      leading: Text('${index +1}'),
-                      title: Text('${snapshot.data!['data'][index]['ch_title']}'),
-                      subtitle:
-                          Text('${snapshot.data!['data'][index]['ch_dateadd']}'),
-                      trailing:
-                          Chip(label: Text(
+                        onTap: () {
+                          Get.toNamed('/details', arguments: {
+                            'id': snapshot.data!['data'][index]['id'],
+                            'title': snapshot.data!['data'][index]['title'],
+                          });
+                        },
+                        leading: Text('${index + 1}'),
+                        title: Text(
+                            '${snapshot.data!['data'][index]['ch_title']}'),
+                        subtitle: Text(
+                            '${snapshot.data!['data'][index]['ch_dateadd']}'),
+                        trailing: Chip(
+                          label: Text(
                               '${snapshot.data!['data'][index]['ch_view']}'),
-                        )
-                    );
+                        ));
                   },
                   separatorBuilder: (context, index) => const Divider(),
                   itemCount: snapshot.data!['data'].length);
