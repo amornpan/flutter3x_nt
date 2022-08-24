@@ -20,12 +20,17 @@ class _MenuDrawerState extends State<MenuDrawer> {
           //   ),
           //   child: Text('Welcome: '),
           // ),
-          const UserAccountsDrawerHeader(
-            currentAccountPicture:  CircleAvatar(
-              backgroundImage: AssetImage('assets/images/me.jpg'),
+          UserAccountsDrawerHeader(
+            currentAccountPicture: const CircleAvatar(
+              backgroundImage:  AssetImage('assets/images/me.jpg'),
             ),
-            accountName:  Text('Amornpan'),
-            accountEmail:  Text('amornpan@nt.ntplc.co.th'),
+            accountName: const Text('Amornpan'),
+            accountEmail: const Text('amornpan@nt.ntplc.co.th'),
+            onDetailsPressed: () => {
+              print('### Press detail'),
+              // Get.toNamed('/profile'),
+              Scaffold.of(context).closeDrawer(),
+            },
           ),
           ListTile(
             leading: const Icon(Icons.home),

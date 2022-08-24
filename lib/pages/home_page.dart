@@ -66,7 +66,8 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(height: 10),
             OutlinedButton(
               onPressed: () {
-                Get.toNamed('/about');
+                // Get.toNamed('/about');
+                debugPrint('## test');
               },
               child: const Text('About'),
             ),
