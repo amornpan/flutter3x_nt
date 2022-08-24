@@ -63,10 +63,17 @@ class _HomePageState extends State<HomePage> {
             const MyHeader(title: 'Kong1'),
             const SizedBox(height: 10),
             OutlinedButton(
-                onPressed: () {
-                  Get.toNamed('/about');
-                },
-                child: const Text('About')),
+              onPressed: () {
+                Get.toNamed('/about');
+              },
+              child: const Text('About'),
+            ),
+            OutlinedButton(
+              onPressed: () {
+                Get.toNamed('/layout');
+              },
+              child: const Text('Layout'),
+            ),
           ],
         ),
       ),

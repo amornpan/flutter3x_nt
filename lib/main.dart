@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter3x_nt/pages/about_page.dart';
 import 'package:flutter3x_nt/pages/home_page.dart';
+import 'package:flutter3x_nt/pages/layout_design.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -39,7 +40,12 @@ class MyApp extends StatelessWidget {
         GetPage(
           name: '/about',
           page: () => const AboutPage(),
-          //transition: 
+          //transition:
+        ),
+        GetPage(
+          name: '/layout',
+          page: () => const LayoutDesign(),
+          //transition:
         ),
       ],
     );

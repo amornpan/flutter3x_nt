@@ -7,8 +7,9 @@ class MyHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'Hello My Header: $title',
+      'Welcome to NT R&D: $title',
       style: const TextStyle(
+        
         color: Colors.brown,
       ),
     );

@@ -13,7 +13,7 @@ class _AboutPageState extends State<AboutPage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('About Me'),
+        title: const Text('รู้จักเราให้มากขึ้น'),
       ),
       body: GridView.count(
         primary: false,
@@ -37,10 +37,10 @@ class _AboutPageState extends State<AboutPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: const [
                 Icon(
-                  Icons.person,
+                  Icons.history_edu,
                   size: 50,
                 ),
-                Text('เกี่ยวกับเรา'),
+                Text('ประวัติความเป็นมา'),
               ],
             ),
           ),
@@ -62,7 +62,7 @@ class _AboutPageState extends State<AboutPage> {
                   Icons.book_online,
                   size: 50,
                 ),
-                Text('[ผลงานของเรา]'),
+                Text('ผลงานของเรา'),
               ],
             ),
           ),
