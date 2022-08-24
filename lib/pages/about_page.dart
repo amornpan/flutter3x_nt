@@ -10,6 +10,7 @@ class AboutPage extends StatefulWidget {
 class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
+    var or = MediaQuery.of(context).orientation;
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -20,7 +21,7 @@ class _AboutPageState extends State<AboutPage> {
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        crossAxisCount: 2,
+        crossAxisCount: or == Orientation.portrait ? 3: 4,
         children: <Widget>[
           OutlinedButton(
             onPressed: (() => {}),
