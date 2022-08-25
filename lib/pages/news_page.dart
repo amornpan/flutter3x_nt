@@ -30,7 +30,7 @@ class _NewsPageState extends State<NewsPage> {
     });
     getData();
     // if failed,use refreshFailed()
-    _refreshController.refreshCompleted();
+    _refreshController.refreshCompleted(resetFooterState: true);
   }
 
   void _onLoading() async {
