@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -112,13 +113,32 @@ class _NewsPageState extends State<NewsPage> {
         onLoading: _onLoading,
         child: ListView.builder(
           itemBuilder: (context, index) => Card(
-            child: Center(
-              child: Text(
-                '${articles[index]['title']}',
+            child: InkWell(
+              child: Column(
+                children: [
+                  CachedNetworkImage(
+                    imageUrl: '${articles[index]['urlToImage']}',
+                    progressIndicatorBuilder:
+                        (context, url, downloadProgress) =>
+                            CircularProgressIndicator(
+                                value: downloadProgress.progress),
+                    errorWidget: (context, url, error) => const Icon(
+                      Icons.error,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.all(8),
+                    child: Text(
+                      '${articles[index]['title']}',
+                      style: const TextStyle(fontSize: 12),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-          itemExtent: 100.0,
+          //itemExtent: 100.0,
           itemCount: articles.length,
         ),
       ),
