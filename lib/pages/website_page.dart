@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:webview_flutter/webview_flutter.dart';
 
 class WebsitePage extends StatefulWidget {
   const WebsitePage({super.key});
@@ -24,7 +25,9 @@ class _WebsitePageState extends State<WebsitePage> {
       appBar: AppBar(
         title: Text('ข่าวจาก: ${news['name']}'),
       ),
-      body: const Text('Website page body'),
+      body: WebView(
+        initialUrl: '${news['url']}',
+      )
     );
   }
 }
