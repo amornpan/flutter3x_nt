@@ -24,7 +24,7 @@ class _LayoutDesignState extends State<LayoutDesign> {
             children: <Widget>[
               Image.asset('assets/images/building-2.png'),
               Padding(
-                padding: EdgeInsets.all(15),
+                padding: const EdgeInsets.all(15),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

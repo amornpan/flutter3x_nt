@@ -24,7 +24,7 @@ class _AboutPageState extends State<AboutPage> {
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 10,
         mainAxisSpacing: 10,
-        crossAxisCount: or == Orientation.portrait ? 3: 4,
+        crossAxisCount: or == Orientation.portrait ? 2: 3,
         children: <Widget>[
           OutlinedButton(
             onPressed: (() => {}),
@@ -45,6 +45,28 @@ class _AboutPageState extends State<AboutPage> {
                   size: 50,
                 ),
                 Text('ประวัติความเป็นมา'),
+              ],
+            ),
+          ),
+          OutlinedButton(
+            onPressed: (() => {}),
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Colors.yellow.shade300),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.auto_graph_sharp,
+                  size: 50,
+                ),
+                Text('วิสัยทัศน์และพันธกิจ'),
               ],
             ),
           ),
@@ -89,6 +111,28 @@ class _AboutPageState extends State<AboutPage> {
                   size: 50,
                 ),
                 Text('บุคลากร'),
+              ],
+            ),
+          ),
+          OutlinedButton(
+            onPressed: (() => {}),
+            style: ButtonStyle(
+              backgroundColor:
+                  MaterialStateProperty.all(Colors.yellow.shade300),
+              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20),
+                ),
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: const [
+                Icon(
+                  Icons.newspaper,
+                  size: 50,
+                ),
+                Text('ข่าวสาร'),
               ],
             ),
           ),

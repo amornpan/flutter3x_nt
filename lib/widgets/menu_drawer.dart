@@ -22,12 +22,12 @@ class _MenuDrawerState extends State<MenuDrawer> {
           // ),
           UserAccountsDrawerHeader(
             currentAccountPicture: const CircleAvatar(
-              backgroundImage:  AssetImage('assets/images/me.jpg'),
+              backgroundImage: AssetImage('assets/images/me.jpg'),
             ),
             accountName: const Text('Amornpan'),
             accountEmail: const Text('amornpan@nt.ntplc.co.th'),
             onDetailsPressed: () => {
-              print('### Press detail'),
+              //print('### Press detail'),
               // Get.toNamed('/profile'),
               Scaffold.of(context).closeDrawer(),
             },
@@ -54,6 +54,15 @@ class _MenuDrawerState extends State<MenuDrawer> {
             title: const Text('สินค้า'),
             onTap: () => {
               Get.offNamedUntil('/product', (route) => false),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.shopping_cart),
+            title: const Text('ข่าวสาร'),
+            onTap: () => {
+              Get.toNamed(
+                '/news',
+              ),
             },
           ),
         ],
