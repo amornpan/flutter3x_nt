@@ -27,8 +27,8 @@ class _MenuDrawerState extends State<MenuDrawer> {
             accountName: const Text('Amornpan'),
             accountEmail: const Text('amornpan@nt.ntplc.co.th'),
             onDetailsPressed: () => {
-              //print('### Press detail'),
-              // Get.toNamed('/profile'),
+              // print('### Press detail'),
+              Get.toNamed('/home'),
               Scaffold.of(context).closeDrawer(),
             },
           ),
@@ -36,7 +36,7 @@ class _MenuDrawerState extends State<MenuDrawer> {
             leading: const Icon(Icons.home),
             title: const Text('หน้าหลัก'),
             onTap: () => {
-              Get.offNamedUntil('/', (route) => false),
+              Get.offNamedUntil('/home', (route) => false),
             },
           ),
           ListTile(

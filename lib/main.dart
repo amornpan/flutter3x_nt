@@ -40,6 +40,10 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
             name: '/',
+            page: () => const LoginPage(),
+            transition: Transition.noTransition),
+        GetPage(
+            name: '/home',
             page: () => const HomePage(),
             transition: Transition.noTransition),
         GetPage(

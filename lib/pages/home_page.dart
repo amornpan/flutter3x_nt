@@ -51,6 +51,13 @@ class _HomePageState extends State<HomePage> {
               debugPrint('you click Moure icon button');
             },
           ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            tooltip: 'Logout',
+            onPressed: () {
+              debugPrint('logout');
+            },
+          ),
         ],
         title: Image.asset(
           'assets/images/logo.png',
