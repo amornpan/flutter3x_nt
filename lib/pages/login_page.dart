@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -11,7 +13,32 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormBuilderState>();
-  final _emailFieldKey = GlobalKey<FormBuilderFieldState>();
+
+  Future<void> login(Map<dynamic, dynamic> fromValue) async {
+    //print(fromValue['email']);
+    //print(fromValue['password']);
+    var url = Uri.parse('https://api.codingthailand.com/api/login');
+    var response = await http.post(
+      url,
+      body: {
+        'email': fromValue['email'],
+        'password': fromValue['password'],
+      },
+    );
+
+    if (response.statusCode == 200) {
+      //lointoken = json.decode(response.body);
+      //return lointoken;
+      print(response.body);
+    } else {
+      // throw Exception('Found error from APIs connection.!!');
+       print(response.body);
+    }
+  }
+
+  // Future<void> login(Map fromValue) async{
+
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -93,11 +120,39 @@ class _LoginPageState extends State<LoginPage> {
                                     FormBuilderValidators.required(
                                         errorText:
                                             'กรุณาป้อนข้อมูลรหัสผ่านด้วย'),
-                                    FormBuilderValidators.email(
+                                    FormBuilderValidators.minLength(6,
                                         errorText:
                                             'รหัสผ่านต้องมีความยาวอย่างน้อย 6 ตัวอักษร'),
                                   ]),
                                 ),
+                                const SizedBox(
+                                  height: 20,
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: MaterialButton(
+                                        height: 50,
+                                        textColor: Colors.white,
+                                        color: Colors.blueGrey,
+                                        onPressed: () {
+                                          _formKey.currentState!.save();
+                                          if (_formKey.currentState!
+                                              .validate()) {
+                                            //print('### ${_formKey.currentState!.value}');
+                                            login(_formKey.currentState!.value);
+                                          }
+                                        },
+                                        child: const Text(
+                                          'เข้าสู่ระบบ',
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                           ),
