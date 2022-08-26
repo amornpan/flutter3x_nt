@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter3x_nt/widgets/menu_drawer.dart';
 import 'package:flutter3x_nt/widgets/my_header.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -17,6 +18,15 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     debugPrint('initState');
+  }
+
+  Future<void> logout() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.remove('token');
+    await prefs.remove('profile');
+
+    //กลับไปที่หน้า Login
+    Get.offNamedUntil('/login', (route) => false);
   }
 
   @override
@@ -55,7 +65,7 @@ class _HomePageState extends State<HomePage> {
             icon: const Icon(Icons.logout),
             tooltip: 'Logout',
             onPressed: () {
-              debugPrint('logout');
+              logout();
             },
           ),
         ],
@@ -71,19 +81,19 @@ class _HomePageState extends State<HomePage> {
           children: <Widget>[
             const MyHeader(title: 'Kong1'),
             const SizedBox(height: 10),
-            OutlinedButton(
-              onPressed: () {
-                // Get.toNamed('/about');
-                debugPrint('## test');
-              },
-              child: const Text('About'),
-            ),
-            OutlinedButton(
-              onPressed: () {
-                Get.toNamed('/layout');
-              },
-              child: const Text('Layout'),
-            ),
+            // OutlinedButton(
+            //   onPressed: () {
+            //     // Get.toNamed('/about');
+            //     debugPrint('## test');
+            //   },
+            //   child: const Text('About'),
+            // ),
+            // OutlinedButton(
+            //   onPressed: () {
+            //     Get.toNamed('/layout');
+            //   },
+            //   child: const Text('Layout'),
+            // ),
           ],
         ),
       ),
