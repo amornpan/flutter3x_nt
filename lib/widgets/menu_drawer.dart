@@ -85,11 +85,29 @@ class _MenuDrawerState extends State<MenuDrawer> {
             },
           ),
           ListTile(
-            leading: const Icon(Icons.shopping_cart),
+            leading: const Icon(Icons.newspaper),
             title: const Text('ข่าวสาร'),
             onTap: () => {
               Get.toNamed(
                 '/news',
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.map),
+            title: const Text('แผนที่'),
+            onTap: () => {
+              Get.toNamed(
+                '/map',
+              ),
+            },
+          ),
+          ListTile(
+            leading: const Icon(Icons.camera),
+            title: const Text('เปิดใช้งานกล้อง'),
+            onTap: () => {
+              Get.toNamed(
+                '/camera',
               ),
             },
           ),

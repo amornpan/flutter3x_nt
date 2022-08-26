@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter3x_nt/pages/about_page.dart';
+import 'package:flutter3x_nt/pages/camera_page.dart';
 import 'package:flutter3x_nt/pages/details_page.dart';
 import 'package:flutter3x_nt/pages/home_page.dart';
 import 'package:flutter3x_nt/pages/layout_design.dart';
 import 'package:flutter3x_nt/pages/login_page.dart';
+import 'package:flutter3x_nt/pages/map_page.dart';
 import 'package:flutter3x_nt/pages/news_page.dart';
 import 'package:flutter3x_nt/pages/product_page.dart';
 import 'package:flutter3x_nt/pages/website_page.dart';
@@ -80,6 +82,14 @@ class MyApp extends StatelessWidget {
         GetPage(
             name: '/login',
             page: () => const LoginPage(),
+            transition: Transition.cupertinoDialog),
+        GetPage(
+            name: '/camera',
+            page: () => const CameraPage(),
+            transition: Transition.cupertinoDialog),
+        GetPage(
+            name: '/map',
+            page: () => const MapPage(),
             transition: Transition.cupertinoDialog),
       ],
     );

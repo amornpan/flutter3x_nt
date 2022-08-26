@@ -81,6 +81,7 @@ class _NewsPageState extends State<NewsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const MenuDrawer(),
       appBar: AppBar(
         //title: Text('ข่าวสาร $totalResults ข่าว')
         title: totalResults > 0 ? Text('ข่าวสาร $totalResults ข่าว') : null,
