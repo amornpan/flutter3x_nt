@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter3x_nt/state/profile_controller.dart';
 import 'package:get/get.dart';
 
 class MenuDrawer extends StatefulWidget {
@@ -20,18 +21,45 @@ class _MenuDrawerState extends State<MenuDrawer> {
           //   ),
           //   child: Text('Welcome: '),
           // ),
-          UserAccountsDrawerHeader(
-            currentAccountPicture: const CircleAvatar(
-              backgroundImage: AssetImage('assets/images/me.jpg'),
-            ),
-            accountName: const Text('Amornpan'),
-            accountEmail: const Text('amornpan@nt.ntplc.co.th'),
-            onDetailsPressed: () => {
-              // print('### Press detail'),
-              Get.toNamed('/home'),
-              Scaffold.of(context).closeDrawer(),
+
+          // UserAccountsDrawerHeader(
+          //   currentAccountPicture: const CircleAvatar(
+          //     backgroundImage: AssetImage('assets/images/me.jpg'),
+          //   ),
+          //   accountName: const Text('Amornpan'),
+          //   accountEmail: const Text('amornpan@nt.ntplc.co.th'),
+          //   onDetailsPressed: () => {
+          //     // print('### Press detail'),
+          //     Get.toNamed('/home'),
+          //     Scaffold.of(context).closeDrawer(),
+          //   },
+          // ),
+
+          // GetX<ProfileController>(
+          //   init: ProfileController(),
+          //   builder: ((controller) => {
+          //     return
+          //   }),),
+
+          GetX<ProfileController>(
+            init: ProfileController(),
+            builder: (controller) {
+              return UserAccountsDrawerHeader(
+                currentAccountPicture: const CircleAvatar(
+                  backgroundImage: AssetImage('assets/images/me.jpg'),
+                ),
+                accountName:  Text('ยินดีต้อนรับ ${controller.profile['name']}'),
+                //accountEmail: const Text('amornpan@nt.ntplc.co.th'),
+                accountEmail: Text('อีเมล ${controller.profile['email']}'),
+                onDetailsPressed: () => {
+                  // print('### Press detail'),
+                  Get.toNamed('/home'),
+                  Scaffold.of(context).closeDrawer(),
+                },
+              );
             },
           ),
+
           ListTile(
             leading: const Icon(Icons.home),
             title: const Text('หน้าหลัก'),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter3x_nt/state/profile_controller.dart';
 import 'package:flutter3x_nt/widgets/menu_drawer.dart';
 import 'package:flutter3x_nt/widgets/my_header.dart';
 import 'package:get/get.dart';
@@ -79,21 +80,19 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            const MyHeader(title: 'Kong1'),
-            const SizedBox(height: 10),
-            // OutlinedButton(
-            //   onPressed: () {
-            //     // Get.toNamed('/about');
-            //     debugPrint('## test');
-            //   },
-            //   child: const Text('About'),
-            // ),
-            // OutlinedButton(
-            //   onPressed: () {
-            //     Get.toNamed('/layout');
-            //   },
-            //   child: const Text('Layout'),
-            // ),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  GetX<ProfileController>(
+                      init: ProfileController(),
+                      builder: (controller) {
+                        return Text(
+                            'ยินดีต้อนรับ ${controller.profile['name']}');
+                      }),
+                ],
+              ),
+            ),
           ],
         ),
       ),
