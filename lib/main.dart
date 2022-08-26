@@ -8,8 +8,15 @@ import 'package:flutter3x_nt/pages/news_page.dart';
 import 'package:flutter3x_nt/pages/product_page.dart';
 import 'package:flutter3x_nt/pages/website_page.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+String? token;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  token = prefs.getString('token');
+
   runApp(const MyApp());
 }
 
@@ -40,7 +47,7 @@ class MyApp extends StatelessWidget {
       getPages: [
         GetPage(
             name: '/',
-            page: () => const LoginPage(),
+            page: () => token == null ? const LoginPage() : const HomePage(),
             transition: Transition.noTransition),
         GetPage(
             name: '/home',
