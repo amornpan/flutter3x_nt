@@ -1,9 +1,19 @@
+import 'dart:convert';
+
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfileController extends GetxController {
-  var profile = {
-    'id': 1,
-    'name': 'John Doe',
-    'email': 'admin@gmail.com',
-  }.obs;
+  var profile = {}.obs;
+
+  Future<void> getProfile() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    profile.value = json.decode(prefs.getString('profile')!);
+  }
+
+  @override
+  void onInit() {
+    super.onInit();
+    getProfile();
+  }
 }
