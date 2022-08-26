@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:form_builder_validators/form_builder_validators.dart';
+import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -14,6 +17,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormBuilderState>();
 
+  // Future<void> login(Map fromValue) async{}
   Future<void> login(Map<dynamic, dynamic> fromValue) async {
     //print(fromValue['email']);
     //print(fromValue['password']);
@@ -29,16 +33,42 @@ class _LoginPageState extends State<LoginPage> {
     if (response.statusCode == 200) {
       //lointoken = json.decode(response.body);
       //return lointoken;
-      print(response.body);
+      //print('### 26aug jsontoken: ${response.body}');
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      await prefs.setString('token', response.body);
+
+      //Get Profile from getprofile APIs
+      var tokenResponse =
+          json.decode(response.body); //tokenResponse['access_token']
+      var profileUrl = Uri.parse('https://api.codingthailand.com/api/profile');
+      var responseProfile = await http.get(
+        profileUrl,
+        headers: {'Authorization': 'Bearer ${tokenResponse['access_token']}'},
+      );
+      //print('### rsp ${responseProfile.body}');
+      var profileData = json.decode(responseProfile.body);
+      var user = profileData['data']['user']; //{id:1, name: 'Jhon' ...}
+      await prefs.setString('profile', json.encode(user));
+
+      //ไปที่หน้า Home
+      Get.offNamedUntil('/home', (route) => false);
     } else {
       // throw Exception('Found error from APIs connection.!!');
-       print(response.body);
+      //print('### 26aug error: ${response.body}');
+      Map<String, dynamic> errResponse = json.decode(response.body);
+      Get.snackbar(
+        'ผลการทำงาน',
+        errResponse['message'],
+        snackPosition: SnackPosition.TOP,
+        icon: const Icon(
+          Icons.error_outline,
+          color: Colors.red,
+        ),
+        backgroundColor: Colors.white,
+        duration: const Duration(seconds: 4),
+      );
     }
   }
-
-  // Future<void> login(Map fromValue) async{
-
-  // }
 
   @override
   Widget build(BuildContext context) {
